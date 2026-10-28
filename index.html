@@ -98,9 +98,12 @@ figcaption b{display:block;color:var(--ink);font-weight:500}
 .tools span{color:var(--mute);font-size:16px}
 
 /* From the phone */
-.phones{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;align-items:start}
-.phones figure{margin:0;display:flex;flex-direction:column;gap:12px;min-width:0}
-.phones figure:nth-child(2){margin-top:56px}
+.journey{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:24px;align-items:start}
+.journey figure{margin:0;display:flex;flex-direction:column;gap:12px;min-width:0}
+.drafts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;align-items:start}
+.drafts img{width:100%;height:auto;border-radius:10px;outline:1px solid rgba(0,0,0,.08);outline-offset:-1px;background:var(--surface)}
+.drafts img:first-child{grid-column:1/-1}
+.now{margin-top:40px}
 .screen{border-radius:34px;padding:9px;background:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.12),0 26px 50px -28px rgba(0,0,0,.55)}
 .screen img{width:100%;height:auto;border-radius:25px}
 .facts{list-style:none;margin:0;padding:0;display:grid;gap:10px}
@@ -155,7 +158,8 @@ footer{border-top:1px solid var(--line);padding-top:28px;padding-bottom:calc(28p
   .steps ol{grid-template-columns:minmax(0,1fr)}
 }
 @media (max-width:640px){
-  .phones figure:nth-child(2){margin-top:32px}
+  .journey{grid-template-columns:minmax(0,1fr)}
+  .now{margin-top:8px;width:min(64%,280px)}
   body{font-size:16px}
   .tiles{grid-template-columns:repeat(3,minmax(0,1fr));height:clamp(540px,86vh,760px)}
   .tile:nth-child(n+4){display:none}
@@ -278,9 +282,16 @@ footer{border-top:1px solid var(--line);padding-top:28px;padding-bottom:calc(28p
         <li>I work from wherever I am, so you get answers fast.</li>
       </ul>
     </div>
-    <div class="phones">
-      <figure><div class="screen"><img src="media/phone-mockup.jpg" alt="The mockup of this page, as I saw it on my phone" width="585" height="1266"></div><figcaption><b>The mockup I picked</b>One of three looks I chose from</figcaption></figure>
-      <figure><div class="screen"><img src="media/phone-live.jpg" alt="This page live on a phone" width="585" height="1266"></div><figcaption><b>The finished page</b>Live, checked on the phone</figcaption></figure>
+    <div class="journey">
+      <figure class="started">
+        <div class="drafts">
+          <img src="media/draft-3.jpg" alt="The first draft of this page, every section side by side" width="996" height="608">
+          <img src="media/draft-1.jpg" alt="The first draft: top of the page" width="996" height="1302">
+          <img src="media/draft-2.jpg" alt="The first draft: YouTube and phone assistant sections" width="996" height="1107">
+        </div>
+        <figcaption><b>Where we started</b>The first draft, as I checked it on my phone</figcaption>
+      </figure>
+      <figure class="now"><div class="screen"><img src="media/phone-live.jpg" alt="This page live on a phone" width="585" height="1266"></div><figcaption><b>Where we are now</b>Live, after my notes</figcaption></figure>
     </div>
   </section>
 
