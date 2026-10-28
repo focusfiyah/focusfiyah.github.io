@@ -119,6 +119,19 @@ figcaption b{display:block;color:var(--ink);font-weight:500}
 .steps b{font-size:20px;font-weight:600;letter-spacing:-.02em}
 .steps span{color:var(--mute)}
 
+/* Fit: who this is for / who should skip it (2026-10-28) */
+.fit{padding-top:var(--band-pad);padding-bottom:var(--band-pad);display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:32px clamp(32px,6vw,96px);border-bottom:1px solid var(--line)}
+.fit h2{font-size:clamp(30px,3.6vw,48px);line-height:1.02}
+.fit .text p{color:var(--mute);max-width:40ch;margin-top:14px}
+.fit .lists{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 40px}
+.fit h3{font-size:26px;font-weight:600;letter-spacing:-.02em;line-height:1.15;margin:0 0 10px}
+.fit ul{list-style:none;margin:0;padding:0;display:grid}
+.fit li{display:flex;gap:12px;align-items:baseline;padding:14px 0;border-top:1px solid var(--line);text-wrap:pretty}
+.fit li:last-child{border-bottom:1px solid var(--line)}
+.fit .yes li::before{content:"";flex:none;width:8px;height:8px;border-radius:50%;background:var(--live);translate:0 -2px}
+.fit .no li{color:var(--mute)}
+.fit .no li::before{content:"";flex:none;width:10px;height:2px;border-radius:2px;background:#9a9ea5;translate:0 -5px}
+
 /* Consult form */
 .consult{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:32px clamp(32px,6vw,96px);padding-top:var(--band-pad);padding-bottom:calc(var(--band-pad) + 16px);scroll-margin-top:24px}
 .consult h2{font-size:clamp(36px,5vw,64px);line-height:.98}
@@ -151,6 +164,7 @@ input::placeholder,textarea::placeholder{color:#686d74}
 footer{border-top:1px solid var(--line);padding-top:28px;padding-bottom:calc(28px + env(safe-area-inset-bottom,0px));display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:15px;color:var(--mute)}
 
 @media (max-width:900px){
+  .fit{grid-template-columns:minmax(0,1fr)}
   :root{--band-pad:72px}
   .offer{grid-template-columns:repeat(2,minmax(0,1fr))}
   .band,.consult{grid-template-columns:minmax(0,1fr)}
@@ -158,6 +172,7 @@ footer{border-top:1px solid var(--line);padding-top:28px;padding-bottom:calc(28p
   .steps ol{grid-template-columns:minmax(0,1fr)}
 }
 @media (max-width:640px){
+  .fit .lists{grid-template-columns:minmax(0,1fr)}
   .journey{grid-template-columns:minmax(0,1fr)}
   .now{margin-top:8px;width:min(64%,280px)}
   body{font-size:16px}
@@ -302,6 +317,33 @@ footer{border-top:1px solid var(--line);padding-top:28px;padding-bottom:calc(28p
       <li><b>I build it and show you</b><span>You see it working before anything goes live.</span></li>
       <li><b>I run it, or hand it over</b><span>You pick: I keep it running for you, or I show you how it works and hand it over.</span></li>
     </ol>
+  </section>
+
+  <section class="wrap fit" aria-labelledby="fit">
+    <div class="text">
+      <h2 id="fit">Is this a fit?</h2>
+      <p>Straight answer before you write. If it's not a fit, I'll tell you on the first message.</p>
+    </div>
+    <div class="lists">
+      <div class="yes">
+        <h3>A good fit if</h3>
+        <ul>
+          <li>The same jobs eat your week and you want them off your plate.</li>
+          <li>You want something built and working that you can use.</li>
+          <li>You'll look at what I make before it goes live and tell me what's off.</li>
+          <li>You want me to keep it running, or to hand it over when it's ready.</li>
+        </ul>
+      </div>
+      <div class="no">
+        <h3>Skip this if</h3>
+        <ul>
+          <li>You want a promise of sales or income. I don't make those.</li>
+          <li>You want calls or texts sent to people who never asked for them.</li>
+          <li>You want fake reviews or made-up results.</li>
+          <li>You want it live today without checking it first.</li>
+        </ul>
+      </div>
+    </div>
   </section>
 
   <section class="wrap consult" id="consult">
