@@ -97,6 +97,16 @@ figcaption b{display:block;color:var(--ink);font-weight:500}
 .tools b{font-weight:500;font-size:19px;letter-spacing:-.015em}
 .tools span{color:var(--mute);font-size:16px}
 
+/* From the phone */
+.phones{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;align-items:start}
+.phones figure{margin:0;display:flex;flex-direction:column;gap:12px;min-width:0}
+.phones figure:nth-child(2){margin-top:56px}
+.screen{border-radius:34px;padding:9px;background:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.12),0 26px 50px -28px rgba(0,0,0,.55)}
+.screen img{width:100%;height:auto;border-radius:25px}
+.facts{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.facts li{display:flex;gap:10px;align-items:baseline;color:var(--mute)}
+.facts li::before{content:"";flex:none;width:8px;height:8px;border-radius:50%;background:var(--live);translate:0 -2px}
+
 /* Steps */
 .steps{padding-top:var(--band-pad);padding-bottom:var(--band-pad);display:grid;gap:40px;border-bottom:1px solid var(--line)}
 .steps h2{font-size:clamp(30px,3.6vw,48px);line-height:1.02}
@@ -145,6 +155,7 @@ footer{border-top:1px solid var(--line);padding-top:28px;padding-bottom:calc(28p
   .steps ol{grid-template-columns:minmax(0,1fr)}
 }
 @media (max-width:640px){
+  .phones figure:nth-child(2){margin-top:32px}
   body{font-size:16px}
   .tiles{grid-template-columns:repeat(3,minmax(0,1fr));height:clamp(540px,86vh,760px)}
   .tile:nth-child(n+4){display:none}
@@ -255,6 +266,22 @@ footer{border-top:1px solid var(--line);padding-top:28px;padding-bottom:calc(28p
       <li><b>A frame checker</b><span>Looks at every frame for glitches before a client sees the video.</span></li>
       <li><b>A memory for every client</b><span>Custom Claude skills that remember how each client likes things done.</span></li>
     </ul>
+  </section>
+
+  <section class="wrap band" id="phone">
+    <div class="text">
+      <h2>All of this, from my phone</h2>
+      <p>I don't use a desktop. I plan, build and check every project on this page with Claude on my Android phone, in the Claude app and on claude.ai in the browser. The heavy work runs in the cloud while I review each step on the phone.</p>
+      <ul class="facts">
+        <li>This website: planned, designed and put live from my phone in one evening.</li>
+        <li>Every video, script and tool above gets checked on the same screen your customers use.</li>
+        <li>I work from wherever I am, so you get answers fast.</li>
+      </ul>
+    </div>
+    <div class="phones">
+      <figure><div class="screen"><img src="media/phone-mockup.jpg" alt="The mockup of this page, as I saw it on my phone" width="585" height="1266"></div><figcaption><b>The mockup I picked</b>One of three looks I chose from</figcaption></figure>
+      <figure><div class="screen"><img src="media/phone-live.jpg" alt="This page live on a phone" width="585" height="1266"></div><figcaption><b>The finished page</b>Live, checked on the phone</figcaption></figure>
+    </div>
   </section>
 
   <section class="wrap steps" aria-labelledby="how">
