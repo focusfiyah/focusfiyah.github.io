@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Ralph, AI Consultant</title>
-<meta name="description" content="Ralph builds AI for creators and small businesses: product videos, a phone assistant that answers every call, content that runs itself, apps and custom tools. Free consult.">
+<meta name="description" content="Ralph builds AI for creators and small businesses: product videos, a phone assistant that answers every call, content that runs itself, custom apps and tools. Free consult.">
 <meta property="og:title" content="Ralph, AI Consultant">
 <meta property="og:description" content="I build AI for creators and small businesses, and I keep it running.">
 <meta property="og:image" content="media/og.jpg">
@@ -120,17 +120,17 @@ h1{font-size:clamp(48px,6.4vw,96px);line-height:.9;font-weight:800}
 .sent{align-self:center;font-weight:700;color:#00684a;font-size:15px}
 .js .call.wait .msg,.js .call.wait .sent{opacity:0;transform:translateY(14px)}
 
-/* App (in development) */
-.soon{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:14px;color:var(--blue);background:var(--blue-soft);padding:6px 12px;border-radius:999px;margin-bottom:18px}
-.soon::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--blue)}
+/* Custom apps */
+.order{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:14px;color:var(--blue);background:var(--blue-soft);padding:6px 12px;border-radius:999px;margin-bottom:18px}
+.order::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--blue)}
 .app{background:var(--sun);border-radius:32px;padding:36px;display:flex;flex-direction:column;gap:22px;box-shadow:0 1px 2px rgba(0,0,0,.05),0 30px 60px -40px rgba(0,0,0,.45)}
 .app header{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap}
 .app h3{font-size:clamp(56px,7vw,96px);line-height:.85;font-weight:800;letter-spacing:-.05em}
 .app header p{font-weight:700;font-size:16px;margin-top:10px;color:var(--ink);max-width:none}
 .app .badge{font-size:13px;font-weight:800;background:var(--ink);color:#fff;padding:7px 12px;border-radius:999px;white-space:nowrap}
-.flow{list-style:none;margin:0;padding:0;display:grid;gap:10px;counter-reset:f}
-.flow li{counter-increment:f;display:flex;gap:14px;align-items:center;background:rgba(255,255,255,.72);border-radius:18px;padding:14px 16px;font-weight:500}
-.flow li::before{content:counter(f);flex:none;width:32px;height:32px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-weight:800;font-size:15px}
+.flow{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.flow li{display:flex;gap:14px;align-items:center;background:rgba(255,255,255,.72);border-radius:18px;padding:14px 16px;font-weight:500}
+.flow li::before{content:"";flex:none;width:32px;height:32px;border-radius:50%;background:var(--ink) url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27%3E%3Cpath d=%27M3.5 8.5 6.5 11.5 12.5 4.5%27 fill=%27none%27 stroke=%27white%27 stroke-width=%272%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27/%3E%3C/svg%3E") center/16px no-repeat}
 
 /* Tools */
 .tools{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
@@ -247,10 +247,10 @@ footer{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;paddin
   </div>
 </header>
 
-<div class="mq"><div class="marquee" aria-label="What I build: AI product videos, phone assistant, content on autopilot, apps, custom tools">
+<div class="mq"><div class="marquee" aria-label="What I build: AI product videos, phone assistant, content on autopilot, custom apps, custom tools">
   <div class="track" aria-hidden="true">
-    <span>AI product videos</span><span>Phone assistant</span><span>Content on autopilot</span><span>Apps</span><span>Custom tools</span>
-    <span>AI product videos</span><span>Phone assistant</span><span>Content on autopilot</span><span>Apps</span><span>Custom tools</span>
+    <span>AI product videos</span><span>Phone assistant</span><span>Content on autopilot</span><span>Custom apps</span><span>Custom tools</span>
+    <span>AI product videos</span><span>Phone assistant</span><span>Content on autopilot</span><span>Custom apps</span><span>Custom tools</span>
   </div>
 </div></div>
 
@@ -305,18 +305,18 @@ footer{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;paddin
 
   <section class="sec wrap split" id="apps">
     <div>
-      <span class="soon">In development</span>
-      <h2>Apps, built around your work</h2>
-      <p>When the tool you need doesn't exist, I build it as an app. Next up is RAM, an app that turns ideas into short videos of you, in your own face and voice. Nothing goes out until you approve it.</p>
+      <span class="order">Built to order</span>
+      <h2>Custom apps, built around your business</h2>
+      <p>Most software makes you change how you work. I build apps around how you already work: your steps, your customers, your brand. You get one tool that does the job, and I keep it running.</p>
     </div>
-    <div class="app" role="group" aria-label="RAM, an app in development">
-      <header><div><h3>RAM</h3><p>Ready Avatar Motion</p></div><span class="badge">Coming soon</span></header>
-      <ol class="flow">
-        <li>You drop in an idea.</li>
-        <li>It writes the script and makes a short video in your face and voice.</li>
-        <li>You approve it, or ask for another take.</li>
-        <li>Approved videos are ready to post.</li>
-      </ol>
+    <div class="app" role="group" aria-label="What a custom app can do">
+      <header><div><h3>Your app</h3><p>Made for one business: yours.</p></div><span class="badge">Custom built</span></header>
+      <ul class="flow">
+        <li>Bookings, orders and sign-ups in one place.</li>
+        <li>Content that makes itself and waits for your OK.</li>
+        <li>Trackers for clients, jobs and spending.</li>
+        <li>Your name and colours, on any phone or computer.</li>
+      </ul>
     </div>
   </section>
 
