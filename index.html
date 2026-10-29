@@ -8,349 +8,325 @@
 <meta property="og:title" content="Ralph, AI Consultant">
 <meta property="og:description" content="I build AI for creators and small businesses, and I keep it running.">
 <meta property="og:image" content="media/og.jpg">
-<meta name="theme-color" content="#fafaf9">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%278%27 fill=%27%230e1013%27/%3E%3Ctext x=%2716%27 y=%2723%27 font-family=%27Arial,sans-serif%27 font-weight=%27700%27 font-size=%2720%27 text-anchor=%27middle%27 fill=%27%23fafaf9%27%3ER%3C/text%3E%3C/svg%3E">
+<meta name="theme-color" content="#f5f6fa">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%278%27 fill=%27%23ff4f1f%27/%3E%3Ctext x=%2716%27 y=%2723%27 font-family=%27Arial,sans-serif%27 font-weight=%27700%27 font-size=%2720%27 text-anchor=%27middle%27 fill=%27%23fff%27%3ER%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,700;12..96,800&display=swap">
 <style>
-/* Layout: a wall of real clips opens the page; below it, plain bands on one 12-col measure, each band one piece of work */
+/* Bold colour (Ralph picked option A, 2026-10-29): one loud orange, one deep blue, black type on cool white; big type does the work. */
 :root{
-  --bg:#fafaf9; --surface:#ffffff; --ink:#0e1013; --mute:#565b63; --line:#e4e4e1;
-  --live:#006b4c; --live-soft:#e3f4ec; --focus:#1f4fd8;
-  --font:"Familjen Grotesk",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
-  --r-tile:14px; --band-pad:112px; --gutter:max(16px,env(safe-area-inset-left,0px)); --gutter-r:max(16px,env(safe-area-inset-right,0px));
-  --ease-smooth-out:cubic-bezier(0.22,1,0.36,1); --duration-fast:250ms; --duration-quick:150ms;
+  --bg:#f5f6fa; --surface:#fff; --ink:#0c0d14; --mute:#4f5563; --line:#dfe2ea;
+  --hot:#ff4f1f; --hot-deep:#d03709; --hot-ink:#fff; --blue:#2b2bd9; --blue-soft:#e8e8ff; --sun:#ffd43b;
+  --font:"Bricolage Grotesque",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --ease:cubic-bezier(0.22,1,0.36,1); --pad:120px;
   --check-y-amount:40px; --check-blur-from:10px; --check-rotate-from:80deg;
 }
 *{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
-::selection{background:var(--ink);color:var(--bg)}
-a{color:inherit;text-underline-offset:.2em;text-decoration-thickness:1px}
-:focus-visible{outline:2px solid var(--focus);outline-offset:3px;border-radius:6px}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-underline-offset:.2em}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:8px}
 img,video{display:block;max-width:100%}
-h1,h2,h3{margin:0;font-weight:600;letter-spacing:-.03em;text-wrap:balance}
+h1,h2,h3{margin:0;letter-spacing:-.035em;text-wrap:balance}
 p{margin:0;text-wrap:pretty}
-.wrap{max-width:1240px;margin:0 auto;padding-left:max(20px,var(--gutter));padding-right:max(20px,var(--gutter-r))}
-
-/* Reel */
-.reel{position:relative;padding:6px max(6px,env(safe-area-inset-right,0px)) 0 max(6px,env(safe-area-inset-left,0px))}
-.tiles{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px;height:clamp(520px,82vh,800px);overflow:hidden;border-radius:var(--r-tile)}
-.tile{position:relative;border-radius:var(--r-tile);overflow:hidden;background:#e9e8e4;will-change:transform}
-.tile:nth-child(2),.tile:nth-child(4){margin-top:-56px;height:calc(100% + 56px)}
-.tile video{width:100%;height:100%;object-fit:cover;outline:1px solid rgba(0,0,0,.06);outline-offset:-1px;border-radius:inherit}
-.over{position:absolute;left:6px;right:6px;bottom:0;padding:clamp(28px,5vw,64px) clamp(20px,4vw,56px) clamp(24px,4vw,48px);
-  background:linear-gradient(to top,var(--bg) 46%,rgba(250,250,249,.86) 70%,rgba(250,250,249,0));display:flex;justify-content:space-between;align-items:flex-end;gap:24px 40px;flex-wrap:wrap}
-.over h1{font-size:clamp(64px,10vw,144px);line-height:.86;letter-spacing:-.055em;font-weight:700}
-.pitch{margin-top:16px;font-size:clamp(19px,2vw,26px);line-height:1.3;letter-spacing:-.02em;color:var(--ink);max-width:24ch;font-weight:500}
-.actions{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
-.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 26px;border-radius:12px;background:var(--ink);color:#fff;font:inherit;font-weight:500;font-size:17px;text-decoration:none;border:0;cursor:pointer;
-  box-shadow:0 1px 1px rgba(0,0,0,.12),0 8px 20px -8px rgba(0,0,0,.45);transition:transform var(--duration-quick) var(--ease-smooth-out),box-shadow var(--duration-fast) var(--ease-smooth-out),background-color var(--duration-fast)}
-.btn:hover{transform:translateY(-1px);box-shadow:0 1px 1px rgba(0,0,0,.12),0 12px 26px -10px rgba(0,0,0,.5)}
+.wrap{max-width:1280px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:56px;padding:0 28px;border-radius:999px;background:var(--hot-deep);color:var(--hot-ink);font:inherit;font-weight:700;font-size:18px;text-decoration:none;border:0;cursor:pointer;
+  box-shadow:0 2px 0 rgba(0,0,0,.18),0 14px 28px -14px rgba(12,13,20,.45);transition:transform 150ms var(--ease),box-shadow 250ms var(--ease)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 2px 0 rgba(0,0,0,.18),0 20px 34px -16px rgba(12,13,20,.5)}
 .btn:active{transform:scale(.97)}
-.quiet{font-weight:500;text-decoration:underline;padding:12px 0}
+.btn.dark{background:var(--ink);box-shadow:0 14px 30px -14px rgba(0,0,0,.6)}
+.link{font-weight:700;text-decoration:underline;text-decoration-thickness:2px;padding:14px 4px}
 
-/* Services */
-.offer{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px 32px;padding-top:44px;padding-bottom:72px;border-bottom:1px solid var(--line)}
-.offer h2{font-size:18px;letter-spacing:-.015em;margin-bottom:6px}
-.offer p{color:var(--mute);font-size:16px;line-height:1.5}
+/* Nav */
+nav{display:flex;justify-content:space-between;align-items:center;padding-top:18px;padding-bottom:18px}
+.logo{font-weight:800;font-size:24px;letter-spacing:-.04em;text-decoration:none}
+.logo span{color:var(--hot)}
+nav .btn{min-height:44px;padding:0 20px;font-size:16px}
 
-/* Work bands */
-.band{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:32px clamp(32px,6vw,96px);padding-top:var(--band-pad);padding-bottom:var(--band-pad);border-bottom:1px solid var(--line)}
-.band h2{font-size:clamp(30px,3.6vw,48px);line-height:1.02}
-.band .text{display:flex;flex-direction:column;gap:20px;align-self:start;position:sticky;top:32px}
-.band .text p{color:var(--mute);max-width:46ch}
-.live{display:inline-flex;align-items:center;gap:8px;align-self:flex-start;background:var(--live-soft);color:var(--live);font-size:14px;font-weight:500;padding:6px 12px 6px 10px;border-radius:999px;font-variant-numeric:tabular-nums}
-.live::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--live);box-shadow:0 0 0 3px rgba(0,107,76,.18)}
-.more{font-weight:500}
+/* Hero */
+.hero{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:40px;align-items:center;padding-top:40px;padding-bottom:96px}
+.kicker{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:15px;background:var(--blue-soft);color:var(--blue);padding:8px 14px;border-radius:999px;margin-bottom:24px}
+.kicker::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--blue)}
+h1{font-size:clamp(48px,6.4vw,96px);line-height:.9;font-weight:800}
+.swap{display:block;color:var(--hot-deep);position:relative;height:1.02em;overflow:hidden}
+.swap .w{display:block;white-space:nowrap;position:absolute;left:0;top:0;transform:translateY(110%);transition:transform 600ms var(--ease)}
+.swap .w.on{transform:none}
+.swap .w.out{transform:translateY(-110%)}
+.lede{margin-top:28px;font-size:clamp(19px,1.8vw,23px);line-height:1.4;color:var(--mute);max-width:30ch;font-weight:500}
+.cta{margin-top:32px;display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px}
 
-.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
-.grid figure{margin:0;display:flex;flex-direction:column;gap:10px;min-width:0}
-.grid figure:nth-child(2){margin-top:48px}
-.grid figure:nth-child(5){margin-top:-48px}
-.grid video{width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:12px;background:#e9e8e4;outline:1px solid rgba(0,0,0,.06);outline-offset:-1px}
-figcaption{font-size:14px;color:var(--mute);line-height:1.35}
-figcaption b{display:block;color:var(--ink);font-weight:500}
+.fan{position:relative;height:clamp(460px,48vw,620px)}
+.card{position:absolute;top:50%;left:50%;width:46%;aspect-ratio:9/16;border-radius:26px;overflow:hidden;background:#dde0ea;
+  box-shadow:0 2px 4px rgba(0,0,0,.12),0 30px 60px -24px rgba(12,13,20,.55);border:6px solid #fff}
+.card video{width:100%;height:100%;object-fit:cover}
+.card:nth-child(1){transform:translate(-112%,-46%) rotate(-9deg)}
+.card:nth-child(2){transform:translate(-50%,-54%) rotate(1deg);z-index:2}
+.card:nth-child(3){transform:translate(12%,-44%) rotate(9deg)}
+.sticker{position:absolute;z-index:3;font-weight:800;font-size:15px;padding:10px 16px;border-radius:999px;white-space:nowrap;box-shadow:0 10px 24px -10px rgba(0,0,0,.45)}
+.s1{background:var(--sun);color:var(--ink);top:8%;right:2%;transform:rotate(6deg)}
+.s2{background:var(--blue);color:#fff;bottom:9%;left:0;transform:rotate(-5deg)}
 
-.yt{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-.yt a{display:flex;flex-direction:column;gap:10px;text-decoration:none;border-radius:12px}
-.yt a:first-child{grid-column:1/-1}
-.yt img{width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border-radius:12px;outline:1px solid rgba(0,0,0,.08);outline-offset:-1px;transition:transform var(--duration-fast) var(--ease-smooth-out),box-shadow var(--duration-fast) var(--ease-smooth-out)}
-.yt a:hover img{transform:translateY(-2px);box-shadow:0 14px 30px -18px rgba(0,0,0,.45)}
-.yt span{font-size:15px;font-weight:500;line-height:1.35}
+/* Marquee */
+.mq{overflow:hidden;padding:28px 0}
+.marquee{background:var(--blue);color:#fff;overflow:hidden;padding:22px 24px;transform:rotate(-1.6deg);margin:0 -12px;box-shadow:0 20px 40px -24px rgba(43,43,217,.7)}
+.track{display:flex;gap:40px;width:max-content;font-weight:800;font-size:clamp(28px,4vw,52px);letter-spacing:-.03em;white-space:nowrap}
+.track span{display:inline-flex;align-items:center;gap:40px}
+.track span::after{content:"";width:18px;height:18px;border-radius:50%;background:var(--sun)}
 
-.call{background:var(--surface);border-radius:20px;padding:clamp(20px,3vw,32px);display:flex;flex-direction:column;gap:14px;box-shadow:0 1px 2px rgba(0,0,0,.05),0 20px 44px -28px rgba(0,0,0,.35)}
-.call header{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;font-size:14px;color:var(--mute)}
-.call header b{color:var(--ink);font-weight:500}
-.msg{max-width:84%;padding:12px 16px;border-radius:16px;font-size:16px;line-height:1.45}
-.msg small{display:block;font-size:12px;color:var(--mute);margin-bottom:2px;font-weight:500}
-.msg.them{align-self:flex-start;background:#f0f0ed;border-bottom-left-radius:6px}
-.msg.ai{align-self:flex-end;background:var(--ink);color:#fff;border-bottom-right-radius:6px}
-.msg.ai small{color:rgba(255,255,255,.7)}
-.sent{align-self:center;display:inline-flex;align-items:center;gap:8px;font-size:14px;color:var(--live);font-weight:500;padding-top:4px}
-.sent svg{width:16px;height:16px}
+/* Sections */
+.sec{padding-top:var(--pad);padding-bottom:var(--pad)}
+.head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px 64px;align-items:end;margin-bottom:48px}
+.head h2{font-size:clamp(40px,5.6vw,80px);line-height:.95;font-weight:800}
+.head p{color:var(--mute);font-size:19px;max-width:44ch}
+.tag{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:14px;color:#00684a;background:#dcf5ea;padding:6px 12px;border-radius:999px;margin-bottom:18px}
+.tag::before{content:"";width:8px;height:8px;border-radius:50%;background:#00a36c}
 
-.tools{list-style:none;margin:0;padding:0;display:grid;gap:0}
-.tools li{display:grid;grid-template-columns:minmax(0,1fr);gap:4px;padding:22px 0;border-top:1px solid var(--line)}
-.tools li:last-child{border-bottom:1px solid var(--line)}
-.tools b{font-weight:500;font-size:19px;letter-spacing:-.015em}
-.tools span{color:var(--mute);font-size:16px}
+/* Horizontal product reel */
+.hwrap{overflow:hidden}
+.hrow{display:flex;gap:20px;width:max-content;padding-left:max(20px,calc((100vw - 1280px)/2 + 20px));padding-right:40px}
+.hcard{width:clamp(240px,22vw,320px);flex:none;margin:0}
+.hcard .v{position:relative;border-radius:22px;overflow:hidden;aspect-ratio:9/16;background:#dde0ea;box-shadow:0 24px 44px -26px rgba(12,13,20,.55)}
+.hcard video{width:100%;height:100%;object-fit:cover}
+.hcard .v::after{content:"Sold on TikTok Shop";position:absolute;left:12px;top:12px;font-size:13px;font-weight:800;background:#fff;color:var(--ink);padding:6px 12px;border-radius:999px}
+.hcard figcaption{margin-top:14px;font-weight:700;font-size:19px;letter-spacing:-.02em}
 
-/* From the phone */
-.journey{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:24px;align-items:start}
-.journey figure{margin:0;display:flex;flex-direction:column;gap:12px;min-width:0}
-.drafts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;align-items:start}
-.drafts img{width:100%;height:auto;border-radius:10px;outline:1px solid rgba(0,0,0,.08);outline-offset:-1px;background:var(--surface)}
-.drafts img:first-child{grid-column:1/-1}
-.now{margin-top:40px}
-.screen{border-radius:34px;padding:9px;background:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.12),0 26px 50px -28px rgba(0,0,0,.55)}
-.screen img{width:100%;height:auto;border-radius:25px}
-.facts{list-style:none;margin:0;padding:0;display:grid;gap:10px}
-.facts li{display:flex;gap:10px;align-items:baseline;color:var(--mute)}
-.facts li::before{content:"";flex:none;width:8px;height:8px;border-radius:50%;background:var(--live);translate:0 -2px}
+/* YouTube panel */
+.panel{background:var(--ink);color:#fff;border-radius:36px;padding:72px;margin-left:max(12px,env(safe-area-inset-left,0px));margin-right:max(12px,env(safe-area-inset-right,0px))}
+.panel .head p{color:#b9bdc9}
+.panel .tag{background:rgba(255,255,255,.12);color:#7ef0bd}
+.yt{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:18px}
+.yt a{text-decoration:none;display:flex;flex-direction:column;gap:10px;grid-column:span 2}
+.yt a:first-child{grid-column:span 4;grid-row:span 2}
+.yt a:nth-child(n+4){grid-column:span 3}
+.yt img{width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border-radius:16px;transition:transform 250ms var(--ease)}
+.yt a:hover img{transform:scale(1.02)}
+.yt span{font-weight:500;font-size:15px;color:#d5d8e0;line-height:1.35}
+.more{display:inline-block;margin-top:28px;font-weight:700;color:var(--sun)}
 
-/* Steps */
-.steps{padding-top:var(--band-pad);padding-bottom:var(--band-pad);display:grid;gap:40px;border-bottom:1px solid var(--line)}
-.steps h2{font-size:clamp(30px,3.6vw,48px);line-height:1.02}
-.steps ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;counter-reset:s}
-.steps li{counter-increment:s;display:flex;flex-direction:column;gap:8px}
-.steps li::before{content:counter(s);font-size:15px;font-weight:600;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:var(--ink);color:#fff;margin-bottom:8px;font-variant-numeric:tabular-nums}
-.steps b{font-size:20px;font-weight:600;letter-spacing:-.02em}
+/* Call */
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px 72px;align-items:center}
+.split h2{font-size:clamp(40px,5.6vw,80px);line-height:.95;font-weight:800}
+.split p{color:var(--mute);font-size:19px;margin-top:20px;max-width:44ch}
+.call{background:var(--blue-soft);border-radius:32px;padding:clamp(20px,3vw,36px);display:flex;flex-direction:column;gap:14px;min-height:430px}
+.call header{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:14px;color:var(--mute)}
+.call header b{color:var(--ink)}
+.msg{max-width:84%;padding:14px 18px;border-radius:22px;font-size:17px;line-height:1.45;transition:opacity 400ms var(--ease),transform 400ms var(--ease)}
+.msg small{display:block;font-size:12px;font-weight:700;margin-bottom:2px}
+.msg.them small{color:var(--mute)}
+.msg.ai small{color:#dcdcff}
+.msg.them{align-self:flex-start;background:#fff;border-bottom-left-radius:6px}
+.msg.ai{align-self:flex-end;background:var(--blue);color:#fff;border-bottom-right-radius:6px}
+.sent{align-self:center;font-weight:700;color:#00684a;font-size:15px}
+.js .call.wait .msg,.js .call.wait .sent{opacity:0;transform:translateY(14px)}
+
+/* Tools */
+.tools{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.tool{border-radius:28px;padding:28px;min-height:250px;display:flex;flex-direction:column;justify-content:space-between;gap:24px}
+.tool:nth-child(1){background:var(--sun)}
+.tool:nth-child(2){background:#c9f2df}
+.tool:nth-child(3){background:#ffd9cc}
+.tool:nth-child(4){background:var(--blue-soft)}
+.tool b{font-size:26px;font-weight:800;letter-spacing:-.03em;line-height:1.05}
+.tool span{font-size:16px;color:#2c303a}
+.tool i{font-style:normal;font-weight:800;font-size:15px}
+
+/* Steps, fit, form */
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;list-style:none;margin:0;padding:0;counter-reset:s}
+.steps li{counter-increment:s;background:var(--surface);border-radius:28px;padding:28px;display:flex;flex-direction:column;gap:10px;box-shadow:0 1px 2px rgba(0,0,0,.05),0 20px 40px -30px rgba(0,0,0,.4)}
+.steps li::before{content:counter(s);font-weight:800;font-size:56px;line-height:1;color:var(--hot-deep);letter-spacing:-.05em}
+.steps b{font-size:22px;font-weight:800;letter-spacing:-.02em}
 .steps span{color:var(--mute)}
-
-/* Fit: who this is for / who should skip it (2026-10-28) */
-.fit{padding-top:var(--band-pad);padding-bottom:var(--band-pad);display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:32px clamp(32px,6vw,96px);border-bottom:1px solid var(--line)}
-.fit h2{font-size:clamp(30px,3.6vw,48px);line-height:1.02}
-.fit .text p{color:var(--mute);max-width:40ch;margin-top:14px}
-.fit .lists{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 40px}
-.fit h3{font-size:26px;font-weight:600;letter-spacing:-.02em;line-height:1.15;margin:0 0 10px}
-.fit ul{list-style:none;margin:0;padding:0;display:grid}
-.fit li{display:flex;gap:12px;align-items:baseline;padding:14px 0;border-top:1px solid var(--line);text-wrap:pretty}
-.fit li:last-child{border-bottom:1px solid var(--line)}
-.fit .yes li::before{content:"";flex:none;width:8px;height:8px;border-radius:50%;background:var(--live);translate:0 -2px}
+.fit{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}
+.fit > div{border-radius:28px;padding:32px}
+.fit .yes{background:#dcf5ea}
+.fit .no{background:#eceef3}
+.fit h3{font-size:28px;font-weight:800;margin-bottom:14px}
+.fit ul{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.fit li{display:flex;gap:12px;align-items:baseline}
+.fit .yes li::before{content:"";flex:none;width:9px;height:9px;border-radius:50%;background:#00a36c;translate:0 -2px}
 .fit .no li{color:var(--mute)}
-.fit .no li::before{content:"";flex:none;width:10px;height:2px;border-radius:2px;background:#9a9ea5;translate:0 -5px}
-
-/* Consult form */
-.consult{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:32px clamp(32px,6vw,96px);padding-top:var(--band-pad);padding-bottom:calc(var(--band-pad) + 16px);scroll-margin-top:24px}
-.consult h2{font-size:clamp(36px,5vw,64px);line-height:.98}
-.consult .text{display:flex;flex-direction:column;gap:16px}
-.consult .text p{color:var(--mute);max-width:40ch}
-form{display:grid;gap:18px;background:var(--surface);border-radius:20px;padding:clamp(20px,3vw,36px);box-shadow:0 1px 2px rgba(0,0,0,.05),0 24px 50px -30px rgba(0,0,0,.35)}
-label{display:grid;gap:8px;font-size:15px;font-weight:500}
-input,textarea{font:inherit;font-size:17px;color:var(--ink);background:var(--bg);border:1px solid #d6d6d2;border-radius:12px;padding:14px 16px;min-height:52px;width:100%;transition:border-color var(--duration-fast),box-shadow var(--duration-fast)}
-textarea{min-height:140px;resize:vertical;line-height:1.5}
-input:focus,textarea:focus{outline:none;border-color:var(--ink);box-shadow:0 0 0 3px rgba(14,16,19,.12)}
-input::placeholder,textarea::placeholder{color:#686d74}
+.fit .no li::before{content:"";flex:none;width:12px;height:3px;border-radius:2px;background:#9aa0ad;translate:0 -5px}
+.consult{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px 72px;scroll-margin-top:20px}
+.consult h2{font-size:clamp(48px,7vw,104px);line-height:.9;font-weight:800}
+.consult h2 em{font-style:normal;color:var(--hot-deep)}
+.consult .text p{color:var(--mute);font-size:19px;margin-top:20px;max-width:36ch}
+form{display:grid;gap:18px;background:var(--surface);border-radius:32px;padding:clamp(22px,3vw,40px);box-shadow:0 1px 2px rgba(0,0,0,.05),0 30px 60px -36px rgba(0,0,0,.45)}
+label{display:grid;gap:8px;font-size:15px;font-weight:700}
+input,textarea{font:inherit;font-size:17px;font-weight:400;color:var(--ink);background:var(--bg);border:2px solid transparent;border-radius:16px;padding:14px 16px;min-height:54px;width:100%;transition:border-color 250ms}
+textarea{min-height:140px;resize:vertical}
+input:focus,textarea:focus{outline:none;border-color:var(--blue)}
+input::placeholder,textarea::placeholder{color:#6a7080}
+.status{font-size:15px;color:var(--mute);min-height:1.4em}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 .row{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
 .btn[disabled]{opacity:.6;cursor:progress;transform:none}
-.status{font-size:15px;color:var(--mute);min-height:1.4em}
 .status.err{color:#b42318}
 .done{display:flex;align-items:center;gap:14px;font-weight:500;font-size:18px}
 .done[hidden]{display:none}
-.t-success-check{display:inline-block;transform-origin:center;opacity:0;color:var(--live)}
+.t-success-check{display:inline-block;transform-origin:center;opacity:0;color:#00684a}
 .t-success-check svg{display:block;overflow:visible;width:36px;height:36px}
 .t-success-check svg path{stroke-dasharray:40;stroke-dashoffset:40}
-.t-success-check[data-state="in"]{animation:t-check-fade 500ms var(--ease-smooth-out) forwards,t-check-rotate 500ms var(--ease-smooth-out) forwards,t-check-blur 500ms var(--ease-smooth-out) forwards,t-check-bob 500ms cubic-bezier(0.34,1.35,0.64,1) forwards}
-.t-success-check[data-state="in"] svg path{animation:t-check-draw 500ms var(--ease-smooth-out) 80ms forwards}
+.t-success-check[data-state="in"]{animation:t-check-fade 500ms var(--ease) forwards,t-check-rotate 500ms var(--ease) forwards,t-check-blur 500ms var(--ease) forwards,t-check-bob 500ms cubic-bezier(0.34,1.35,0.64,1) forwards}
+.t-success-check[data-state="in"] svg path{animation:t-check-draw 500ms var(--ease) 80ms forwards}
 @keyframes t-check-fade{from{opacity:0}to{opacity:1}}
 @keyframes t-check-rotate{from{transform:rotate(var(--check-rotate-from))}to{transform:rotate(0)}}
 @keyframes t-check-blur{from{filter:blur(var(--check-blur-from))}to{filter:blur(0)}}
 @keyframes t-check-bob{from{translate:0 var(--check-y-amount)}to{translate:0 0}}
 @keyframes t-check-draw{to{stroke-dashoffset:0}}
 
-footer{border-top:1px solid var(--line);padding-top:28px;padding-bottom:calc(28px + env(safe-area-inset-bottom,0px));display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:15px;color:var(--mute)}
+footer{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-top:32px;padding-bottom:calc(32px + env(safe-area-inset-bottom,0px));font-weight:500;color:var(--mute);border-top:2px solid var(--line)}
 
 @media (max-width:900px){
-  .fit{grid-template-columns:minmax(0,1fr)}
-  :root{--band-pad:72px}
-  .offer{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .band,.consult{grid-template-columns:minmax(0,1fr)}
-  .band .text{position:static}
-  .steps ol{grid-template-columns:minmax(0,1fr)}
+  :root{--pad:80px}
+  .hero,.head,.split,.consult{grid-template-columns:minmax(0,1fr)}
+  .panel{padding:40px 24px}
+  .hero{padding-top:16px;padding-bottom:64px;gap:12px}
+  .fan{height:min(112vw,520px)}
+  .tools{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .yt{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .yt a,.yt a:nth-child(n+4){grid-column:auto}
+  .yt a:first-child{grid-column:1/-1;grid-row:auto}
 }
 @media (max-width:640px){
-  .fit .lists{grid-template-columns:minmax(0,1fr)}
-  .journey{grid-template-columns:minmax(0,1fr)}
-  .now{margin-top:8px;width:min(64%,280px)}
   body{font-size:16px}
-  .tiles{grid-template-columns:repeat(3,minmax(0,1fr));height:clamp(540px,86vh,760px)}
-  .tile:nth-child(n+4){display:none}
-  .tile:nth-child(2){margin-top:-40px;height:calc(100% + 40px)}
-  .over{background:linear-gradient(to top,var(--bg) 58%,rgba(250,250,249,.9) 78%,rgba(250,250,249,0))}
-  .btn{width:100%}
-  .actions{width:100%;gap:4px}
-  .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .grid figure:nth-child(2){margin-top:32px}
-  .grid figure:nth-child(5){margin-top:0}
-  .grid figure:nth-child(n+5){display:none}
-  .offer{grid-template-columns:minmax(0,1fr);gap:20px;padding-top:28px;padding-bottom:48px}
+  nav .btn{display:none}
+  .fan{overflow-x:clip}
+  .card{width:42%;border-width:4px;border-radius:20px}
+  .sticker{font-size:13px;padding:8px 12px}
+  .cta .btn{width:100%}
+  .hcard{width:68vw}
+  .hwrap{overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .hcard{scroll-snap-align:center}
+  .tools,.steps,.fit{grid-template-columns:minmax(0,1fr)}
+  .tool{min-height:0}
+  .yt a:first-child{grid-column:1/-1;grid-row:auto}
 }
 @media (prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto}
-  .btn,.yt img{transition:none}
+  .btn,.yt img,.msg{transition:none}
+  .js .call.wait .msg,.js .call.wait .sent{opacity:1;transform:none}
   .t-success-check{animation:none!important;opacity:1}
   .t-success-check svg path{animation:none!important;stroke-dashoffset:0}
 }
 </style>
 </head>
 <body>
+<script>document.documentElement.classList.add("js")</script>
+<nav class="wrap" aria-label="Top">
+  <a class="logo" href="#">Ralph<span>.</span></a>
+  <a class="btn dark" href="#consult">Free consult</a>
+</nav>
 
-<header class="reel" aria-label="Ralph, AI consultant">
-  <div class="tiles" aria-hidden="true">
-    <div class="tile"><video src="media/castor.mp4" poster="media/castor.jpg" autoplay muted loop playsinline preload="auto"></video></div>
-    <div class="tile"><video src="media/vans.mp4" poster="media/vans.jpg" autoplay muted loop playsinline preload="auto"></video></div>
-    <div class="tile"><video src="media/cards.mp4" poster="media/cards.jpg" autoplay muted loop playsinline preload="auto"></video></div>
-    <div class="tile"><video src="media/beam.mp4" poster="media/beam.jpg" autoplay muted loop playsinline preload="metadata"></video></div>
-    <div class="tile"><video src="media/brush.mp4" poster="media/brush.jpg" autoplay muted loop playsinline preload="metadata"></video></div>
+<header class="wrap hero">
+  <div>
+    <span class="kicker">AI for creators and small businesses</span>
+    <h1>I build AI that <span class="swap" aria-live="off"><span class="w on">sells.</span><span class="w" aria-hidden="true">picks up.</span><span class="w" aria-hidden="true">posts daily.</span><span class="w" aria-hidden="true">runs itself.</span></span></h1>
+    <p class="lede">I build it, I check it, and I keep it running for you.</p>
+    <div class="cta"><a class="btn" href="#consult">Ask for a free consult</a><a class="link" href="#work">See the work</a></div>
   </div>
-  <div class="over">
-    <div>
-      <h1>Ralph</h1>
-      <p class="pitch">I build AI for creators and small businesses, and I keep it running.</p>
-    </div>
-    <div class="actions">
-      <a class="btn" href="#consult">Ask for a free consult</a>
-      <a class="quiet" href="#work">See the work</a>
-    </div>
+  <div class="fan" aria-hidden="true">
+    <div class="card"><video src="media/castor.mp4" poster="media/castor.jpg" autoplay muted loop playsinline></video></div>
+    <div class="card"><video src="media/vans.mp4" poster="media/vans.jpg" autoplay muted loop playsinline></video></div>
+    <div class="card"><video src="media/beam.mp4" poster="media/beam.jpg" autoplay muted loop playsinline></video></div>
+    <span class="sticker s1">Sold on TikTok Shop</span>
+    <span class="sticker s2">Made from real photos</span>
   </div>
 </header>
 
+<div class="mq"><div class="marquee" aria-label="What I build: AI product videos, phone assistant, content on autopilot, custom tools">
+  <div class="track" aria-hidden="true">
+    <span>AI product videos</span><span>Phone assistant</span><span>Content on autopilot</span><span>Custom tools</span>
+    <span>AI product videos</span><span>Phone assistant</span><span>Content on autopilot</span><span>Custom tools</span>
+  </div>
+</div></div>
+
 <main>
-  <section class="wrap offer" aria-label="What I build">
-    <div><h2>AI product videos</h2><p>Ads that look filmed, made from your real product photos.</p></div>
-    <div><h2>AI phone assistant</h2><p>Answers every call, books people in and sends you the details.</p></div>
-    <div><h2>Content on autopilot</h2><p>A channel that finds the topic, writes it, voices it and edits it.</p></div>
-    <div><h2>Custom tools</h2><p>Trackers and checks built around how you already work.</p></div>
-  </section>
-
-  <section class="wrap band" id="work">
-    <div class="text">
-      <span class="live">Running since Oct 1, 2026</span>
-      <h2>Product videos for a TikTok Shop creator</h2>
-      <p>She sends the product. I write the script, make every shot from her real product photos, add the voiceover and edit it. Each video gets its own rooms, angles and order, so no two look the same. Every clip on this page is from a video that sold.</p>
+  <section class="sec" id="work">
+    <div class="wrap head">
+      <div><span class="tag">Running since Oct 1, 2026</span><h2>Product videos that sold</h2></div>
+      <p>A TikTok Shop creator sends the product. I write the script, make every shot from her real product photos, add the voice and edit it. Every clip here is from a video that sold.</p>
     </div>
-    <div class="grid">
-      <figure><video data-src="media/path.mp4" poster="media/path.jpg" muted loop playsinline preload="none"></video><figcaption><b>Clip-on flashlight</b>Sold on TikTok Shop</figcaption></figure>
-      <figure><video data-src="media/pouches.mp4" poster="media/pouches.jpg" muted loop playsinline preload="none"></video><figcaption><b>Rodent repellent pouches</b>Sold on TikTok Shop</figcaption></figure>
-      <figure><video data-src="media/dilator.mp4" poster="media/dilator.jpg" muted loop playsinline preload="none"></video><figcaption><b>Nasal dilators</b>Sold on TikTok Shop</figcaption></figure>
-      <figure><video data-src="media/roller.mp4" poster="media/roller.jpg" muted loop playsinline preload="none"></video><figcaption><b>Castor oil roll-on</b>Sold on TikTok Shop</figcaption></figure>
-      <figure><video data-src="media/box.mp4" poster="media/box.jpg" muted loop playsinline preload="none"></video><figcaption><b>Card game</b>Sold on TikTok Shop</figcaption></figure>
-      <figure><video data-src="media/rinse.mp4" poster="media/rinse.jpg" muted loop playsinline preload="none"></video><figcaption><b>Heated face scrubber</b>Sold on TikTok Shop</figcaption></figure>
+    <div class="hwrap">
+      <div class="hrow">
+        <figure class="hcard"><div class="v"><video data-src="media/path.mp4" poster="media/path.jpg" muted loop playsinline preload="none"></video></div><figcaption>Clip-on flashlight</figcaption></figure>
+        <figure class="hcard"><div class="v"><video data-src="media/pouches.mp4" poster="media/pouches.jpg" muted loop playsinline preload="none"></video></div><figcaption>Rodent repellent pouches</figcaption></figure>
+        <figure class="hcard"><div class="v"><video data-src="media/dilator.mp4" poster="media/dilator.jpg" muted loop playsinline preload="none"></video></div><figcaption>Nasal dilators</figcaption></figure>
+        <figure class="hcard"><div class="v"><video data-src="media/roller.mp4" poster="media/roller.jpg" muted loop playsinline preload="none"></video></div><figcaption>Castor oil roll-on</figcaption></figure>
+        <figure class="hcard"><div class="v"><video data-src="media/box.mp4" poster="media/box.jpg" muted loop playsinline preload="none"></video></div><figcaption>Card game</figcaption></figure>
+        <figure class="hcard"><div class="v"><video data-src="media/rinse.mp4" poster="media/rinse.jpg" muted loop playsinline preload="none"></video></div><figcaption>Heated face scrubber</figcaption></figure>
+      </div>
     </div>
   </section>
 
-  <section class="wrap band">
-    <div class="text">
-      <span class="live">Running since Sep 29, 2026</span>
-      <h2>Day One AI, my own YouTube channel</h2>
-      <p>When a new AI tool comes out, my system finds it, writes the tutorial, records it in my cloned voice and edits it. The goal is to be the first how-to on YouTube. I watch every video before it goes public, and each one gets its own thumbnail design.</p>
-      <a class="more" href="https://www.youtube.com/@dayoneaitools1" target="_blank" rel="noopener">Watch the channel</a>
+  <section class="panel">
+    <div class="head">
+      <div><span class="tag">Running since Sep 29, 2026</span><h2>A YouTube channel on autopilot</h2></div>
+      <p>When a new AI tool comes out, the system finds it, writes the how-to, voices it and edits it. I watch every video before it goes public, and each one gets its own thumbnail.</p>
     </div>
     <div class="yt">
-      <a href="https://youtu.be/YjuJMqgZeRA" target="_blank" rel="noopener"><img src="media/yt-higgsfield-content-factory.jpg" alt="Thumbnail: Higgsfield Content Factory tutorial" width="960" height="540"><span>Higgsfield Content Factory: one “what if” into a finished video</span></a>
-      <a href="https://youtu.be/bTl0btJGRvE" target="_blank" rel="noopener"><img src="media/yt-higgsfield-3d-angles.jpg" alt="Thumbnail: Higgsfield 3D Angles tutorial" width="960" height="540"><span>Higgsfield 3D Angles: reshoot one photo from any angle</span></a>
-      <a href="https://youtu.be/6M9Ca79Z2r4" target="_blank" rel="noopener"><img src="media/yt-higgsfield-playable-games.jpg" alt="Thumbnail: Higgsfield Playable tutorial" width="960" height="540"><span>Higgsfield Playable: a mobile game from one prompt</span></a>
-      <a href="https://youtu.be/_fENrvfyXzA" target="_blank" rel="noopener"><img src="media/yt-ideogram-vector.jpg" alt="Thumbnail: Ideogram Vector 1.0 tutorial" width="960" height="540"><span>Ideogram Vector 1.0: editable SVG logos from a prompt</span></a>
-      <a href="https://youtu.be/IgqOV92Bz3A" target="_blank" rel="noopener"><img src="media/yt-canva-craft.jpg" alt="Thumbnail: Canva Craft tutorial" width="960" height="540"><span>Canva Craft: Canva’s new AI image model</span></a>
+      <a href="https://youtu.be/YjuJMqgZeRA" target="_blank" rel="noopener"><img src="media/yt-higgsfield-content-factory.jpg" alt="Thumbnail: Higgsfield Content Factory tutorial" width="960" height="540"><span>Higgsfield Content Factory</span></a>
+      <a href="https://youtu.be/bTl0btJGRvE" target="_blank" rel="noopener"><img src="media/yt-higgsfield-3d-angles.jpg" alt="Thumbnail: Higgsfield 3D Angles tutorial" width="960" height="540"><span>Higgsfield 3D Angles</span></a>
+      <a href="https://youtu.be/6M9Ca79Z2r4" target="_blank" rel="noopener"><img src="media/yt-higgsfield-playable-games.jpg" alt="Thumbnail: Higgsfield Playable tutorial" width="960" height="540"><span>Higgsfield Playable</span></a>
+      <a href="https://youtu.be/_fENrvfyXzA" target="_blank" rel="noopener"><img src="media/yt-ideogram-vector.jpg" alt="Thumbnail: Ideogram Vector tutorial" width="960" height="540"><span>Ideogram Vector 1.0</span></a>
+      <a href="https://youtu.be/IgqOV92Bz3A" target="_blank" rel="noopener"><img src="media/yt-canva-craft.jpg" alt="Thumbnail: Canva Craft tutorial" width="960" height="540"><span>Canva Craft</span></a>
     </div>
+    <a class="more" href="https://www.youtube.com/@dayoneaitools1" target="_blank" rel="noopener">Watch the channel</a>
   </section>
 
-  <section class="wrap band">
-    <div class="text">
-      <span class="live">Running since Oct 11, 2026</span>
-      <h2>A phone assistant for a Brooklyn driving school</h2>
-      <p>It answers the school's line day and night. It answers questions about lessons, passes callers to the owner when the office is open, and after hours it takes a name and number, reads them back and sends the owner the message.</p>
+  <section class="sec wrap split">
+    <div>
+      <span class="tag">Running since Oct 11, 2026</span>
+      <h2>A phone line that never misses a call</h2>
+      <p>For a Brooklyn driving school. It answers day and night, answers questions about lessons, and after hours it takes a name and number and sends the owner the message.</p>
     </div>
-    <div class="call" role="group" aria-label="Example call">
-      <header><b>Example call</b><span>Names and numbers made up for this page</span></header>
+    <div class="call wait" role="group" aria-label="Example call">
+      <header><b>Example call</b><span>Names and numbers made up</span></header>
       <p class="msg them"><small>Caller, 9:40 pm</small>Hi, can I book a lesson for this weekend?</p>
-      <p class="msg ai"><small>Assistant</small>Yes, we have weekend lessons. The office is closed right now, so I'll take your name and number and the owner will call you back.</p>
+      <p class="msg ai"><small>Assistant</small>Yes, we have weekend lessons. The office is closed, so I'll take your name and number for a callback.</p>
       <p class="msg them"><small>Caller</small>Sure. It's Maria, 555 0142.</p>
       <p class="msg ai"><small>Assistant</small>Thanks, Maria. That's 555 0142, right?</p>
-      <p class="sent"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5 6.5 12 13 4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Message sent to the owner</p>
+      <p class="sent">Message sent to the owner</p>
     </div>
   </section>
 
-  <section class="wrap band">
-    <div class="text">
-      <h2>Tools I built for my own work</h2>
-      <p>These run behind every job above. I can build the same kind of thing around your business.</p>
-    </div>
-    <ul class="tools">
-      <li><b>A script check</b><span>No paid video gets made until the script passes every rule.</span></li>
-      <li><b>A spend tracker</b><span>Adds up what each video actually cost, step by step.</span></li>
-      <li><b>A frame checker</b><span>Looks at every frame for glitches before a client sees the video.</span></li>
-      <li><b>A memory for every client</b><span>Custom AI skills that remember how each client likes things done.</span></li>
-    </ul>
-  </section>
-
-  <section class="wrap band" id="phone">
-    <div class="text">
-      <h2>No desktop. No laptop.<br>Just my phone.</h2>
-      <p>Every video, script, phone assistant and tool on this page was made on the phone in my hand. The heavy work runs in the cloud. I steer it, check it and send it out with my thumbs.</p>
-      <ul class="facts">
-        <li>This website went from idea to live in one evening, all on my phone.</li>
-        <li>Every video, script and tool above gets checked on the same screen your customers use.</li>
-        <li>I work from wherever I am, so you get answers fast.</li>
-      </ul>
-    </div>
-    <div class="journey">
-      <figure class="started">
-        <div class="drafts">
-          <img src="media/draft-3.jpg" alt="The first draft of this page, every section side by side" width="996" height="608">
-          <img src="media/draft-1.jpg" alt="The first draft: top of the page" width="996" height="1302">
-          <img src="media/draft-2.jpg" alt="The first draft: YouTube and phone assistant sections" width="996" height="1107">
-        </div>
-        <figcaption><b>Where we started</b>The first draft, as I checked it on my phone</figcaption>
-      </figure>
-      <figure class="now"><div class="screen"><img src="media/phone-live.jpg" alt="This page live on a phone" width="585" height="1266"></div><figcaption><b>Where we are now</b>Live, after my notes</figcaption></figure>
+  <section class="wrap" style="padding-bottom:var(--pad)">
+    <div class="head"><h2>Tools behind every job</h2><p>I built these to run the work above. I can build the same kind of thing around your business.</p></div>
+    <div class="tools">
+      <div class="tool"><i>01</i><div><b>A script check</b><br><span>No paid video gets made until the script passes every rule.</span></div></div>
+      <div class="tool"><i>02</i><div><b>A spend tracker</b><br><span>Adds up what each video cost, step by step.</span></div></div>
+      <div class="tool"><i>03</i><div><b>A frame checker</b><br><span>Looks at every frame for glitches before a client sees it.</span></div></div>
+      <div class="tool"><i>04</i><div><b>A memory for every client</b><br><span>Custom AI skills that remember how each client likes things done.</span></div></div>
     </div>
   </section>
 
-  <section class="wrap steps" aria-labelledby="how">
-    <h2 id="how">How it works</h2>
-    <ol>
+
+  <section class="sec wrap">
+    <div class="head"><h2>How it works</h2><p>Three steps. The first one is free.</p></div>
+    <ol class="steps">
       <li><b>Tell me what eats your week</b><span>We talk for free. You tell me what you do and what takes too long.</span></li>
       <li><b>I build it and show you</b><span>You see it working before anything goes live.</span></li>
-      <li><b>I run it, or hand it over</b><span>You pick: I keep it running for you, or I show you how it works and hand it over.</span></li>
+      <li><b>I run it, or hand it over</b><span>You pick: I keep it running, or I show you how and hand it over.</span></li>
     </ol>
   </section>
 
-  <section class="wrap fit" aria-labelledby="fit">
-    <div class="text">
-      <h2 id="fit">Is this a fit?</h2>
-      <p>Straight answer before you write. If it's not a fit, I'll tell you on the first message.</p>
-    </div>
-    <div class="lists">
-      <div class="yes">
-        <h3>A good fit if</h3>
-        <ul>
-          <li>The same jobs eat your week and you want them off your plate.</li>
-          <li>You want something built and working that you can use.</li>
-          <li>You'll look at what I make before it goes live and tell me what's off.</li>
-          <li>You want me to keep it running, or to hand it over when it's ready.</li>
-        </ul>
-      </div>
-      <div class="no">
-        <h3>Skip this if</h3>
-        <ul>
-          <li>You want a promise of sales or income. I don't make those.</li>
-          <li>You want calls or texts sent to people who never asked for them.</li>
-          <li>You want fake reviews or made-up results.</li>
-          <li>You want it live today without checking it first.</li>
-        </ul>
-      </div>
+  <section class="wrap" style="padding-bottom:var(--pad)">
+    <div class="head"><h2>Is this a fit?</h2><p>Straight answer before you write. If it's not a fit, I'll tell you on the first message.</p></div>
+    <div class="fit">
+      <div class="yes"><h3>A good fit if</h3><ul>
+        <li>The same jobs eat your week and you want them off your plate.</li>
+        <li>You want something built and working that you can use.</li>
+        <li>You'll look at what I make before it goes live and tell me what's off.</li>
+        <li>You want me to keep it running, or to hand it over when it's ready.</li></ul></div>
+      <div class="no"><h3>Skip this if</h3><ul>
+        <li>You want a promise of sales or income. I don't make those.</li>
+        <li>You want calls or texts sent to people who never asked for them.</li>
+        <li>You want fake reviews or made-up results.</li>
+        <li>You want it live today without checking it first.</li></ul></div>
     </div>
   </section>
 
-  <section class="wrap consult" id="consult">
-    <div class="text">
-      <h2>Ask for a free consult</h2>
-      <p>Tell me what you do and what takes too much of your time. I'll reply by email.</p>
-    </div>
+  <section class="wrap consult" id="consult" style="padding-bottom:var(--pad)">
+    <div class="text"><h2>Let's build <em>yours.</em></h2><p>Tell me what you do and what takes too much of your time. I'll reply by email.</p></div>
     <form id="consult-form" action="https://formsubmit.co/life22watch@gmail.com" method="POST" novalidate>
       <input type="hidden" name="_subject" value="New consult request from your site">
       <input type="hidden" name="_template" value="table">
@@ -358,7 +334,7 @@ footer{border-top:1px solid var(--line);padding-top:28px;padding-bottom:calc(28p
       <div class="hp" aria-hidden="true"><label>Leave this empty <input type="text" name="_honey" id="f-honey" tabindex="-1" autocomplete="off"></label></div>
       <label for="f-name">Your name<input id="f-name" name="name" type="text" autocomplete="name" required></label>
       <label for="f-email">Email<input id="f-email" name="email" type="email" autocomplete="email" inputmode="email" required></label>
-      <label for="f-msg">What do you need help with?<textarea id="f-msg" name="message" required placeholder="For example: I sell on TikTok Shop and need more videos, or my phone rings while I'm with customers."></textarea></label>
+      <label for="f-msg">What do you need help with?<textarea id="f-msg" name="message" required placeholder="For example: I sell on TikTok Shop and need more videos, or the phone rings while I'm with customers."></textarea></label>
       <div class="row">
         <button class="btn" id="f-send" type="submit">Send</button>
         <p class="status" id="f-status" role="status" aria-live="polite"></p>
@@ -367,45 +343,48 @@ footer{border-top:1px solid var(--line);padding-top:28px;padding-bottom:calc(28p
     </form>
   </section>
 </main>
-
-<footer class="wrap">
-  <span>Ralph, AI consultant</span>
-  <a href="https://www.youtube.com/@dayoneaitools1" target="_blank" rel="noopener">Day One AI on YouTube</a>
-</footer>
+<footer class="wrap"><span>Ralph, AI consultant</span><a href="https://www.youtube.com/@dayoneaitools1" target="_blank" rel="noopener">Day One AI on YouTube</a></footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/ScrollTrigger.min.js"></script>
 <script>
 (function () {
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-  // Clips: play only while on screen; still posters for reduced motion.
-  var vids = Array.prototype.slice.call(document.querySelectorAll("video"));
-  if (reduce) vids.forEach(function (v) { v.removeAttribute("autoplay"); v.pause(); });
-  if ("IntersectionObserver" in window && !reduce) {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        var v = e.target;
-        if (e.isIntersecting) {
-          if (v.dataset.src && !v.src) v.src = v.dataset.src;
-          var p = v.play(); if (p && p.catch) p.catch(function () {});
-        } else { v.pause(); }
-      });
-    }, { rootMargin: "200px 0px" });
+  var vids = [].slice.call(document.querySelectorAll("video"));
+  if (reduce) vids.forEach(function (v) { v.removeAttribute("autoplay"); if (v.dataset.src) v.src = v.dataset.src; v.pause(); });
+  else if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (es) { es.forEach(function (e) { var v = e.target;
+      if (e.isIntersecting) { if (v.dataset.src && !v.src) v.src = v.dataset.src; var p = v.play(); if (p && p.catch) p.catch(function () {}); } else v.pause(); }); }, { rootMargin: "200px" });
     vids.forEach(function (v) { io.observe(v); });
-  } else {
-    vids.forEach(function (v) { if (v.dataset.src) v.src = v.dataset.src; });
   }
 
-  // The one scroll moment: the reel's columns drift apart as you leave it.
+  // Headline word swap (the first word is there from the first frame)
+  var words = [].slice.call(document.querySelectorAll(".swap .w")), i = 0;
+  if (!reduce) setInterval(function () {
+    var a = words[i], b = words[(i + 1) % words.length]; i = (i + 1) % words.length;
+    b.style.transition = "none"; b.classList.remove("out"); void b.offsetWidth; b.style.transition = "";
+    a.classList.remove("on"); a.classList.add("out"); b.classList.add("on");
+  }, 2400);
+
+  // Call: bubbles arrive one by one the first time it scrolls into view
+  var call = document.querySelector(".call");
+  if (reduce || !("IntersectionObserver" in window)) call.classList.remove("wait");
+  else new IntersectionObserver(function (es, o) { if (!es[0].isIntersecting) return; o.disconnect();
+    [].slice.call(call.querySelectorAll(".msg,.sent")).forEach(function (m, k) { m.style.transitionDelay = (k * 650) + "ms"; });
+    call.classList.remove("wait"); }, { threshold: .5 }).observe(call);
+
   if (window.gsap && window.ScrollTrigger) {
     gsap.registerPlugin(ScrollTrigger);
     var mm = gsap.matchMedia();
     mm.add("(prefers-reduced-motion: no-preference)", function () {
-      gsap.utils.toArray(".tile").forEach(function (t, i) {
-        gsap.to(t, { yPercent: i % 2 ? -10 : 6, ease: "none",
-          scrollTrigger: { trigger: ".reel", start: "top top", end: "bottom top", scrub: true } });
-      });
+      gsap.to(".track", { xPercent: -50, duration: 22, ease: "none", repeat: -1 });
+      gsap.timeline({ scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true } })
+        .to(".card:nth-child(1)", { rotate: -14, x: -24 }, 0).to(".card:nth-child(3)", { rotate: 14, x: 24 }, 0);
+    });
+    mm.add("(min-width: 641px) and (prefers-reduced-motion: no-preference)", function () {
+      var row = document.querySelector(".hrow");
+      gsap.to(row, { x: function () { return -(row.scrollWidth - window.innerWidth); }, ease: "none",
+        scrollTrigger: { trigger: ".hwrap", start: "center center", end: function () { return "+=" + (row.scrollWidth - window.innerWidth); }, pin: "#work", scrub: 1, invalidateOnRefresh: true } });
     });
   }
 
